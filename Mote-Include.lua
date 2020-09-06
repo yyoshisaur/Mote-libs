@@ -735,7 +735,7 @@ function get_midcast_set(spell, spellMap)
         end
     end
     
-    classes.SkipSkillCheck = classes.NoSkillSpells:contains(spell.english)
+    classes.SkipSkillCheck = classes.NoSkillSpells:contains(spell.name)
     -- Handle automatic selection of set based on spell class/name/map/skill/type.
     equipSet = select_specific_set(equipSet, spell, spellMap)
 
@@ -930,7 +930,7 @@ function select_specific_set(equipSet, spell, spellMap)
     -- Take the determined base equipment set and try to get the simple naming extensions that
     -- may apply to it (class, spell name, spell map).
     local namedSet = get_named_set(equipSet, spell, spellMap)
-    
+
     -- If no simple naming sub-tables were found, and we simply got back the original equip set,
     -- check for spell.skill and spell.type, then check the simple naming extensions again.
     if namedSet == equipSet then

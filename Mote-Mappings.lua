@@ -217,8 +217,9 @@ spell_maps = {
     ['エンサンダーII']='EnSpell',['エンストーンII']='EnSpell',['エンエアロII']='EnSpell',['エンブリザドII']='EnSpell',['エンファイアII']='EnSpell',['エンウォータII']='EnSpell',
 }
 
-no_skill_spells_list = S{'Haste', 'Refresh', 'Regen', 'Protect', 'Protectra', 'Shell', 'Shellra',
-        'Raise', 'Reraise', 'Sneak', 'Invisible', 'Deodorize'}
+no_skill_spells_list = S{'リレイズ', 'リレイズII', 'リレイズIII', 'リレイズIV', 'レイズ', 'レイズII', 'レイズIII', 'アレイズ',
+                        'トラクタ', 'デジョン', 'デジョンII', 'エスケプ', 'テレポホラ', 'テレポデム', 'テレポメア', 'テレポルテ', 'テレポヨト',
+                        'テレポヴァズ', 'リコールパシュ', 'リコールメリファ', 'リコールジャグ', 'リトレース',}
 
 
 -------------------------------------------------------------------------------------------------------------------
