@@ -159,7 +159,7 @@ function init_include()
     (binds_on_load or global_on_load)()
 
     -- Load a sidecar file for the job (if it exists) that may re-define init_gear_sets and file_unload.
-    load_sidecar(player.main_job)
+    load_sidecar(gearswap.res.jobs[player.main_job_id].ens)
 
     -- General var initialization and setup.
     if job_setup then
@@ -292,8 +292,8 @@ function pretarget(spell)
 end
 
 function precast(spell)
-    if state.Buff[spell.english] ~= nil then
-        state.Buff[spell.english] = true
+    if state.Buff[spell.name] ~= nil then
+        state.Buff[spell.name] = true
     end
     handle_actions(spell, 'precast')
 end
@@ -303,8 +303,8 @@ function midcast(spell)
 end
 
 function aftercast(spell)
-    if state.Buff[spell.english] ~= nil then
-        state.Buff[spell.english] = not spell.interrupted or buffactive[spell.english] or false
+    if state.Buff[spell.name] ~= nil then
+        state.Buff[spell.name] = not spell.interrupted or buffactive[spell.name] or false
     end
     handle_actions(spell, 'aftercast')
 end
@@ -492,7 +492,7 @@ function get_idle_set(petStatus)
     
     local idleScope
 
-    if buffactive.weakness then
+    if buffactive['衰弱'] then
         idleScope = 'Weak'
     elseif areas.Cities:contains(world.area) then
         idleScope = 'Town'
@@ -672,7 +672,7 @@ function get_precast_set(spell, spellMap)
     -- Handle automatic selection of set based on spell class/name/map/skill/type.
     equipSet = select_specific_set(equipSet, spell, spellMap)
 
-    
+
     -- Once we have a named base set, do checks for specialized modes (casting mode, weaponskill mode, etc).
     
     if spell.action_type == 'Magic' then
@@ -693,7 +693,7 @@ function get_precast_set(spell, spellMap)
 
     -- Update defintions for element-specific gear that may be used.
     set_elemental_gear(spell)
-    
+
     -- Return whatever we've constructed.
     return equipSet
 end
@@ -738,7 +738,7 @@ function get_midcast_set(spell, spellMap)
     classes.SkipSkillCheck = classes.NoSkillSpells:contains(spell.english)
     -- Handle automatic selection of set based on spell class/name/map/skill/type.
     equipSet = select_specific_set(equipSet, spell, spellMap)
-    
+
     -- After the default checks, do checks for specialized modes (casting mode, etc).
     
     if spell.action_type == 'Magic' then
@@ -798,7 +798,7 @@ end
 function get_weaponskill_set(equipSet, spell, spellMap)
     -- Custom handling for weaponskills
     local ws_mode = state.WeaponskillMode.current
-    
+
     if ws_mode == 'Normal' then
         -- If a particular weaponskill mode isn't specified, see if we have a weaponskill mode
         -- corresponding to the current offense mode.  If so, use that.
@@ -911,7 +911,7 @@ end
 
 -- Get a spell mapping for the spell.
 function get_spell_map(spell)
-    local defaultSpellMap = classes.SpellMaps[spell.english]
+    local defaultSpellMap = classes.SpellMaps[spell.name]
     local jobSpellMap
     
     if job_get_spell_map then
@@ -960,9 +960,9 @@ function get_named_set(equipSet, spell, spellMap)
         if classes.CustomClass and equipSet[classes.CustomClass] then
             mote_vars.set_breadcrumbs:append(classes.CustomClass)
             return equipSet[classes.CustomClass]
-        elseif equipSet[spell.english] then
-            mote_vars.set_breadcrumbs:append(spell.english)
-            return equipSet[spell.english]
+        elseif equipSet[spell.name] then
+            mote_vars.set_breadcrumbs:append(spell.name)
+            return equipSet[spell.name]
         elseif spellMap and equipSet[spellMap] then
             mote_vars.set_breadcrumbs:append(spellMap)
             return equipSet[spellMap]

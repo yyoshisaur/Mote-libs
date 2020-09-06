@@ -7,13 +7,13 @@
 -- Buff utility functions.
 -------------------------------------------------------------------------------------------------------------------
 
-local cancel_spells_to_check = S{'Sneak', 'Stoneskin', 'Spectral Jig', 'Trance', 'Monomi: Ichi', 'Utsusemi: Ichi'}
+local cancel_spells_to_check = S{'スニーク', 'ストンスキン', 'スペクトラルジグ', 'トランス', '物見の術:壱', '空蝉の術:壱'}
 local cancel_types_to_check = S{'Waltz', 'Samba'}
 
 -- Function to cancel buffs if they'd conflict with using the spell you're attempting.
 -- Requirement: Must have Cancel addon installed and loaded for this to work.
 function cancel_conflicting_buffs(spell, action, spellMap, eventArgs)
-    if cancel_spells_to_check:contains(spell.english) or cancel_types_to_check:contains(spell.type) then
+    if cancel_spells_to_check:contains(spell.name) or cancel_types_to_check:contains(spell.type) then
         if spell.action_type == 'Ability' then
             local abil_recasts = windower.ffxi.get_ability_recasts()
             if abil_recasts[spell.recast_id] > 0 then
@@ -30,31 +30,33 @@ function cancel_conflicting_buffs(spell, action, spellMap, eventArgs)
             end
         end
         
-        if spell.english == 'Spectral Jig' and buffactive.sneak then
+        if spell.name == 'スペクトラルジグ' and buffactive['スニーク'] then
             cast_delay(0.2)
-            send_command('cancel sneak')
-        elseif spell.english == 'Sneak' and spell.target.type == 'SELF' and buffactive.sneak then
-            send_command('cancel sneak')
-        elseif spell.english == ('Stoneskin') then
-            send_command('@wait 1.0;cancel stoneskin')
-        elseif spell.english:startswith('Monomi') then
-            send_command('@wait 1.7;cancel sneak')
-        elseif spell.english == 'Utsusemi: Ichi' then
-            send_command('@wait 1.7;cancel copy image,copy image (2)')
-        elseif (spell.english == 'Trance' or spell.type=='Waltz') and buffactive['saber dance'] then
+            send_command('cancel 71') -- スニーク 71
+        elseif spell.name == 'スニーク' and spell.target.type == 'SELF' and buffactive['スニーク'] then
+            send_command(windower.to_shift_ji('cancel 71'))
+        elseif spell.name == ('ストンスキン') then
+            send_command('@wait 0.5;cancel 37') -- ストンスキン 37
+        elseif string.find(spell.name, '物見') then
+            send_command(windower.to_shift_ji('@wait 0.5;cancel 71'))
+        elseif spell.name == '空蝉の術:壱' then
+            send_command('@wait 0.5;cancel 66,444') -- 分身 66,分身(2) 444
+        elseif (spell.name == 'トランス' or spell.type=='Waltz') and buffactive['剣の舞い'] then
             cast_delay(0.2)
-            send_command('cancel saber dance')
-        elseif spell.type=='Samba' and buffactive['fan dance'] then
+            send_command(windower.to_shift_ji('cancel 410')) -- 剣の舞い 410
+        elseif spell.type=='Samba' and buffactive['扇の舞い'] then
             cast_delay(0.2)
-            send_command('cancel fan dance')
+            send_command(windower.to_shift_ji('cancel 411')) -- 扇の舞い 411
         end
     end
 end
 
 
 -- Some mythics have special durations for level 1 and 2 aftermaths
-local special_aftermath_mythics = S{'Tizona', 'Kenkonken', 'Murgleis', 'Yagrush', 'Carnwenhan', 'Nirvana', 'Tupsimati', 'Idris'}
-
+-- local special_aftermath_mythics = S{'ティソーナ', '乾坤圏', 'ミュルグレス', 'ヤグルシュ', 'カルンウェナン', 'ニルヴァーナ', 'トゥプシマティ', 'イドリス'}
+local special_aftermath_mythics_lv1_magic = S{'カルンウェナン', 'ミュルグレス', 'ヤグルシュ', 'レーヴァテイン', 'トゥプシマティ', 'イドリス'}
+local special_aftermath_mythics_lv2_magic = S{'ティソーナ', 'ミュルグレス', 'レーヴァテイン', 'トゥプシマティ', 'イドリス'}
+local special_aftermath_mythics_range = S{'ガストラフェテス', 'デスペナルティ'}
 -- Call from job_precast() to setup aftermath information for custom timers.
 function custom_aftermath_timers_precast(spell)
     if spell.type == 'WeaponSkill' then
@@ -63,12 +65,12 @@ function custom_aftermath_timers_precast(spell)
         local relic_ws = data.weaponskills.relic[player.equipment.main] or data.weaponskills.relic[player.equipment.range]
         local mythic_ws = data.weaponskills.mythic[player.equipment.main] or data.weaponskills.mythic[player.equipment.range]
         local empy_ws = data.weaponskills.empyrean[player.equipment.main] or data.weaponskills.empyrean[player.equipment.range]
-        
+
         if not relic_ws and not mythic_ws and not empy_ws then
             return
         end
 
-        info.aftermath.weaponskill = spell.english
+        info.aftermath.weaponskill = spell.name
         info.aftermath.duration = 0
         
         info.aftermath.level = math.floor(player.tp / 1000)
@@ -76,39 +78,41 @@ function custom_aftermath_timers_precast(spell)
             info.aftermath.level = 1
         end
         
-        if spell.english == relic_ws then
-            info.aftermath.duration = math.floor(0.2 * player.tp)
+        if spell.name == relic_ws then
+            info.aftermath.duration = math.floor(0.02 * player.tp)
             if info.aftermath.duration < 20 then
                 info.aftermath.duration = 20
             end
-        elseif spell.english == empy_ws then
+        elseif spell.name == empy_ws then
             -- nothing can overwrite lvl 3
-            if buffactive['Aftermath: Lv.3'] then
+            if buffactive['アフターマス:Lv3'] then
                 return
             end
             -- only lvl 3 can overwrite lvl 2
-            if info.aftermath.level ~= 3 and buffactive['Aftermath: Lv.2'] then
+            if info.aftermath.level ~= 3 and buffactive['アフターマス:Lv2'] then
                 return
             end
             
             -- duration is based on aftermath level
-            info.aftermath.duration = 30 * info.aftermath.level
-        elseif spell.english == mythic_ws then
+            info.aftermath.duration = 60 * info.aftermath.level
+        elseif spell.name == mythic_ws then
             -- nothing can overwrite lvl 3
-            if buffactive['Aftermath: Lv.3'] then
+            if buffactive['アフターマス:Lv3'] then
                 return
             end
             -- only lvl 3 can overwrite lvl 2
-            if info.aftermath.level ~= 3 and buffactive['Aftermath: Lv.2'] then
+            if info.aftermath.level ~= 3 and buffactive['アフターマス:Lv2'] then
                 return
             end
 
             -- Assume mythic is lvl 80 or higher, for duration
                         
             if info.aftermath.level == 1 then
-                info.aftermath.duration = (special_aftermath_mythics:contains(player.equipment.main) and 270) or 90
+                info.aftermath.duration = (special_aftermath_mythics_lv1_magic:contains(player.equipment.main) and 270) or 90
             elseif info.aftermath.level == 2 then
-                info.aftermath.duration = (special_aftermath_mythics:contains(player.equipment.main) and 270) or 120
+                info.aftermath.duration = (special_aftermath_mythics_lv2_magic:contains(player.equipment.main) and 270) 
+                                            or (special_aftermath_mythics_range:contains(player.equipment.range) and 90)
+                                            or 120
             else
                 info.aftermath.duration = 180
             end
@@ -120,13 +124,14 @@ end
 -- Call from job_aftercast() to create the custom aftermath timer.
 function custom_aftermath_timers_aftercast(spell)
     if not spell.interrupted and spell.type == 'WeaponSkill' and
-       info.aftermath and info.aftermath.weaponskill == spell.english and info.aftermath.duration > 0 then
-
+        info.aftermath and info.aftermath.weaponskill == spell.name and info.aftermath.duration > 0 then
         local aftermath_name = 'Aftermath: Lv.'..tostring(info.aftermath.level)
-        send_command('timers d "Aftermath: Lv.1"')
-        send_command('timers d "Aftermath: Lv.2"')
-        send_command('timers d "Aftermath: Lv.3"')
-        send_command('timers c "'..aftermath_name..'" '..tostring(info.aftermath.duration)..' down abilities/00027.png')
+        -- send_command('timers d "Aftermath: Lv.1"')
+        -- send_command('timers d "Aftermath: Lv.2"')
+        -- send_command('timers d "Aftermath: Lv.3"')
+        send_command('timers d "Aftermath: Lv.1";timers d "Aftermath: Lv.2";timers d "Aftermath: Lv.3";timers c "'..aftermath_name..'" '..tostring(info.aftermath.duration)..' down abilities/00027.png')
+        
+        -- add_to_chat(aftermath_name..' '..tostring(info.aftermath.duration))
 
         info.aftermath = {}
     end
@@ -137,7 +142,7 @@ end
 -- Utility functions for changing spells and target types in an automatic manner.
 -------------------------------------------------------------------------------------------------------------------
 
-local waltz_tp_cost = {['Curing Waltz'] = 200, ['Curing Waltz II'] = 350, ['Curing Waltz III'] = 500, ['Curing Waltz IV'] = 650, ['Curing Waltz V'] = 800}
+local waltz_tp_cost = {['ケアルワルツ'] = 200, ['ケアルワルツII'] = 350, ['ケアルワルツIII'] = 500, ['ケアルワルツIV'] = 650, ['ケアルワルツV'] = 800}
 
 -- Utility function for automatically adjusting the waltz spell being used to match HP needs and TP limits.
 -- Handle spell changes before attempting any precast stuff.
@@ -168,7 +173,7 @@ function refine_waltz(spell, action, spellMap, eventArgs)
     
     -- If we have an estimated missing HP value, we can adjust the preferred tier used.
     if missingHP ~= nil then
-        if player.main_job == 'DNC' then
+        if gearswap.res.jobs[player.main_job_id].ens == 'DNC' then
             if missingHP < 40 and spell.target.name == player.name then
                 -- Not worth curing yourself for so little.
                 -- Don't block when curing others to allow for waking them up.
@@ -176,22 +181,22 @@ function refine_waltz(spell, action, spellMap, eventArgs)
                 eventArgs.cancel = true
                 return
             elseif missingHP < 200 then
-                newWaltz = 'Curing Waltz'
+                newWaltz = 'ケアルワルツ'
                 waltzID = 190
             elseif missingHP < 600 then
-                newWaltz = 'Curing Waltz II'
+                newWaltz = 'ケアルワルツII'
                 waltzID = 191
             elseif missingHP < 1100 then
-                newWaltz = 'Curing Waltz III'
+                newWaltz = 'ケアルワルツIII'
                 waltzID = 192
             elseif missingHP < 1500 then
-                newWaltz = 'Curing Waltz IV'
+                newWaltz = 'ケアルワルツIV'
                 waltzID = 193
             else
-                newWaltz = 'Curing Waltz V'
+                newWaltz = 'ケアルワルツV'
                 waltzID = 311
             end
-        elseif player.sub_job == 'DNC' then
+        elseif gearswap.res.jobs[player.sub_job_id].ens == 'DNC' then
             if missingHP < 40 and spell.target.name == player.name then
                 -- Not worth curing yourself for so little.
                 -- Don't block when curing others to allow for waking them up.
@@ -199,13 +204,13 @@ function refine_waltz(spell, action, spellMap, eventArgs)
                 eventArgs.cancel = true
                 return
             elseif missingHP < 150 then
-                newWaltz = 'Curing Waltz'
+                newWaltz = 'ケアルワルツ'
                 waltzID = 190
             elseif missingHP < 300 then
-                newWaltz = 'Curing Waltz II'
+                newWaltz = 'ケアルワルツII'
                 waltzID = 191
             else
-                newWaltz = 'Curing Waltz III'
+                newWaltz = 'ケアルワルツIII'
                 waltzID = 192
             end
         else
@@ -219,7 +224,7 @@ function refine_waltz(spell, action, spellMap, eventArgs)
     local downgrade
     
     -- Downgrade the spell to what we can afford
-    if player.tp < tpCost and not buffactive.trance then
+    if player.tp < tpCost and not buffactive['トランス'] then
         --[[ Costs:
             Curing Waltz:     200 TP
             Curing Waltz II:  350 TP
@@ -235,13 +240,13 @@ function refine_waltz(spell, action, spellMap, eventArgs)
             eventArgs.cancel = true
             return
         elseif player.tp < 350 then
-            newWaltz = 'Curing Waltz'
+            newWaltz = 'ケアルワルツ'
         elseif player.tp < 500 then
-            newWaltz = 'Curing Waltz II'
+            newWaltz = 'ケアルワルツII'
         elseif player.tp < 650 then
-            newWaltz = 'Curing Waltz III'
+            newWaltz = 'ケアルワルツIII'
         elseif player.tp < 800 then
-            newWaltz = 'Curing Waltz IV'
+            newWaltz = 'ケアルワルツIV'
         end
         
         downgrade = 'Insufficient TP ['..tostring(player.tp)..']. Downgrading to '..newWaltz..'.'
@@ -249,9 +254,9 @@ function refine_waltz(spell, action, spellMap, eventArgs)
 
     
     if newWaltz ~= spell.english then
-        send_command('@input /ja "'..newWaltz..'" '..tostring(spell.target.raw))
+        send_command('@input /ja "'..windower.to_shift_jis(newWaltz)..'" '..tostring(spell.target.raw))
         if downgrade then
-            add_to_chat(122, downgrade)
+            add_to_chat(122, windower.to_shift_jis(downgrade))
         end
         eventArgs.cancel = true
         return
@@ -438,12 +443,12 @@ end
 
 -- Function to get an appropriate obi/cape/ring for the current action.
 function set_elemental_obi_cape_ring(spell)
-    if spell.element == 'None' then
+    if spell.element == 'なし' then
         return
     end
     
     local world_elements = S{world.day_element}
-    if world.weather_element ~= 'None' then
+    if world.weather_element ~= 'なし' then
         world_elements:add(world.weather_element)
     end
 
@@ -451,12 +456,12 @@ function set_elemental_obi_cape_ring(spell)
     gear.ElementalObi.name = obi_name or gear.default.obi_waist  or ""
     
     if obi_name then
-        if player.inventory['Twilight Cape'] or player.wardrobe['Twilight Cape'] or player.wardrobe2['Twilight Cape'] or player.wardrobe3['Twilight Cape'] or player.wardrobe4['Twilight Cape'] then
-            gear.ElementalCape.name = "Twilight Cape"
+        if player.inventory['黄昏の羽衣'] or player.wardrobe['黄昏の羽衣'] or player.wardrobe2['黄昏の羽衣'] or player.wardrobe3['黄昏の羽衣'] or player.wardrobe4['黄昏の羽衣'] then
+            gear.ElementalCape.name = "黄昏の羽衣"
         end
-        if (player.inventory['Zodiac Ring'] or player.wardrobe['Zodiac Ring'] or player.wardrobe2['Zodiac Ring'] or player.wardrobe3['Zodiac Ring'] or player.wardrobe4['Zodiac Ring']) and spell.english ~= 'Impact' and
-            not S{'Divine Magic','Dark Magic','Healing Magic'}:contains(spell.skill) then
-            gear.ElementalRing.name = "Zodiac Ring"
+        if (player.inventory['ゾディアクリング'] or player.wardrobe['ゾディアクリング'] or player.wardrobe2['ゾディアクリング'] or player.wardrobe3['ゾディアクリング'] or player.wardrobe4['ゾディアクリング']) and spell.english ~= 'Impact' and
+            not S{'神聖魔法','暗黒魔法','回復魔法'}:contains(spell.skill) then
+            gear.ElementalRing.name = "ゾディアクリング"
         end
     else
         gear.ElementalCape.name = gear.default.obi_back

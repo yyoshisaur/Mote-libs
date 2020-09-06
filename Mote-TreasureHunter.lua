@@ -45,7 +45,7 @@ info = info or {}
 state.TreasureMode = M{['description']='Treasure Mode'}
 
 -- TH mode handling
-if player.main_job == 'THF' then
+if gearswap.res.jobs[player.main_job_id].ens == 'THF' then
     state.TreasureMode:options('None','Tag','SATA','Fulltime')
     state.TreasureMode:set('Tag')
 else
@@ -173,10 +173,10 @@ function on_action_for_th(action)
         if action.actor_id == player.id then
             -- category == 1=melee, 2=ranged, 3=weaponskill, 4=spell, 6=job ability, 14=unblinkable JA
             if state.TreasureMode.value == 'Fulltime' or
-               (state.TreasureMode.value == 'SATA' and (action.category == 1 or ((state.Buff['Sneak Attack'] or state.Buff['Trick Attack']) and action.category == 3))) or
-               (state.TreasureMode.value == 'Tag' and action.category == 1 and state.th_gear_is_locked) or -- Tagging with a melee hit
-               (th_action_check and th_action_check(action.category, action.param)) -- Any user-specified tagging actions
-               then
+                (state.TreasureMode.value == 'SATA' and (action.category == 1 or ((state.Buff['不意打ち'] or state.Buff['だまし討ち']) and action.category == 3))) or
+                (state.TreasureMode.value == 'Tag' and action.category == 1 and state.th_gear_is_locked) or -- Tagging with a melee hit
+                (th_action_check and th_action_check(action.category, action.param)) -- Any user-specified tagging actions
+                then
                 for index,target in pairs(action.targets) do
                     if not info.tagged_mobs[target.id] and _settings.debug_mode then
                         add_to_chat(123,'Mob '..target.id..' hit. Adding to tagged mobs table.')

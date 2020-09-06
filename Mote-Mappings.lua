@@ -9,65 +9,65 @@
 -- Basic elements
 elements = {}
 
-elements.list = S{'Light','Dark','Fire','Ice','Wind','Earth','Lightning','Water'}
+elements.list = S{'光','闇','火','氷','風','土','雷','水'}
 
-elements.weak_to = {['Light']='Dark', ['Dark']='Light', ['Fire']='Ice', ['Ice']='Wind', ['Wind']='Earth', ['Earth']='Lightning',
-        ['Lightning']='Water', ['Water']='Fire'}
+elements.weak_to = {['光']='闇', ['闇']='光', ['火']='氷', ['氷']='風', ['風']='土', ['土']='雷',
+        ['雷']='水', ['水']='火'}
 
-elements.strong_to = {['Light']='Dark', ['Dark']='Light', ['Fire']='Water', ['Ice']='Fire', ['Wind']='Ice', ['Earth']='Wind',
-        ['Lightning']='Earth', ['Water']='Lightning'}
+elements.strong_to = {['光']='闇', ['闇']='光', ['火']='水', ['氷']='火', ['風']='氷', ['土']='風',
+        ['雷']='土', ['水']='雷'}
 
-storms = S{"Aurorastorm", "Voidstorm", "Firestorm", "Sandstorm", "Rainstorm", "Windstorm", "Hailstorm", "Thunderstorm",
-		"Aurorastorm II", "Voidstorm II", "Firestorm II", "Sandstorm II", "Rainstorm II", "Windstorm II", "Hailstorm II", "Thunderstorm II"}
+storms = S{"極光の陣", "妖霧の陣", "熱波の陣", "砂塵の陣", "豪雨の陣", "烈風の陣", "吹雪の陣", "疾雷の陣",
+		"極光の陣II", "妖霧の陣II", "熱波の陣II", "砂塵の陣II", "豪雨の陣II", "烈風の陣II", "吹雪の陣II", "疾雷の陣II"}
 
-elements.storm_of = {['Light']="Aurorastorm", ['Dark']="Voidstorm", ['Fire']="Firestorm", ['Earth']="Sandstorm",
-        ['Water']="Rainstorm", ['Wind']="Windstorm", ['Ice']="Hailstorm", ['Lightning']="Thunderstorm",['Light']="Aurorastorm II",
-		['Dark']="Voidstorm II", ['Fire']="Firestorm II", ['Earth']="Sandstorm II", ['Water']="Rainstorm II", ['Wind']="Windstorm II",
-		['Ice']="Hailstorm II", ['Lightning']="Thunderstorm II"}
+elements.storm_of = {['光']="極光の陣", ['闇']="妖霧の陣", ['火']="熱波の陣", ['土']="砂塵の陣",
+        ['水']="豪雨の陣", ['風']="烈風の陣", ['氷']="吹雪の陣", ['雷']="疾雷の陣",['光']="極光の陣II",
+        ['闇']="妖霧の陣II", ['火']="熱波の陣II", ['土']="砂塵の陣II", ['水']="豪雨の陣II", ['風']="烈風の陣II",
+		['氷']="吹雪の陣II", ['雷']="疾雷の陣II"}
 
 spirits = S{"LightSpirit", "DarkSpirit", "FireSpirit", "EarthSpirit", "WaterSpirit", "AirSpirit", "IceSpirit", "ThunderSpirit"}
-elements.spirit_of = {['Light']="Light Spirit", ['Dark']="Dark Spirit", ['Fire']="Fire Spirit", ['Earth']="Earth Spirit",
-        ['Water']="Water Spirit", ['Wind']="Air Spirit", ['Ice']="Ice Spirit", ['Lightning']="Thunder Spirit"}
+elements.spirit_of = {['光']="Light Spirit", ['闇']="Dark Spirit", ['火']="Fire Spirit", ['土']="Earth Spirit",
+        ['水']="Water Spirit", ['風']="Air Spirit", ['氷']="Ice Spirit", ['雷']="Thunder Spirit"}
 
-runes = S{'Lux', 'Tenebrae', 'Ignis', 'Gelus', 'Flabra', 'Tellus', 'Sulpor', 'Unda'}
-elements.rune_of = {['Light']='Lux', ['Dark']='Tenebrae', ['Fire']='Ignis', ['Ice']='Gelus', ['Wind']='Flabra',
-    ['Earth']='Tellus', ['Lightning']='Sulpor', ['Water']='Unda'}
+runes = S{'ルックス', 'テネブレイ', 'イグニス', 'ゲールス', 'フラブラ', 'テッルス', 'スルポール', 'ウンダ'}
+elements.rune_of = {['光']='ルックス', ['闇']='テネブレイ', ['火']='イグニス', ['氷']='ゲールス', ['風']='フラブラ',
+    ['土']='テッルス', ['雷']='スルポール', ['水']='ウンダ'}
 
-elements.obi_of = {['Light']='Hachirin-no-obi', ['Dark']='Hachirin-no-obi', ['Fire']='Hachirin-no-obi', ['Ice']='Hachirin-no-obi', ['Wind']='Hachirin-no-obi',
-    ['Earth']='Hachirin-no-obi', ['Lightning']='Hachirin-no-obi', ['Water']='Hachirin-no-obi'}
+elements.obi_of = {['光']='八輪の帯', ['闇']='八輪の帯', ['火']='八輪の帯', ['氷']='八輪の帯', ['風']='八輪の帯',
+    ['土']='八輪の帯', ['雷']='八輪の帯', ['水']='八輪の帯'}
 
-elements.gorget_of = {['Light']='Fotia Gorget', ['Dark']='Fotia Gorget', ['Fire']='Fotia Gorget', ['Ice']='Fotia Gorget',
-    ['Wind']='Fotia Gorget', ['Earth']='Fotia Gorget', ['Lightning']='Fotia Gorget', ['Water']='Fotia Gorget'}
+elements.gorget_of = {['光']='フォシャゴルゲット', ['闇']='フォシャゴルゲット', ['火']='フォシャゴルゲット', ['氷']='フォシャゴルゲット',
+    ['風']='フォシャゴルゲット', ['土']='フォシャゴルゲット', ['雷']='フォシャゴルゲット', ['水']='フォシャゴルゲット'}
 
-elements.belt_of = {['Light']='Fotia Belt', ['Dark']='Fotia Belt', ['Fire']='Fotia Belt', ['Ice']='Fotia Belt',
-    ['Wind']='Fotia Belt', ['Earth']='Fotia Belt', ['Lightning']='Fotia Belt', ['Water']='Fotia Belt'}
+elements.belt_of = {['光']='フォシャベルト', ['闇']='フォシャベルト', ['火']='フォシャベルト', ['氷']='フォシャベルト',
+    ['風']='フォシャベルト', ['土']='フォシャベルト', ['雷']='フォシャベルト', ['水']='フォシャベルト'}
 
-elements.fastcast_staff_of = {['Light']='Arka I', ['Dark']='Xsaeta I', ['Fire']='Atar I', ['Ice']='Vourukasha I',
-    ['Wind']='Vayuvata I', ['Earth']='Vishrava I', ['Lightning']='Apamajas I', ['Water']='Haoma I', ['Thunder']='Apamajas I'}
+elements.fastcast_staff_of = {['光']='アーカI', ['闇']='キサエタI', ['火']='アターI', ['氷']='ボルカシャI',
+    ['風']='バユバタI', ['土']='ビシュラバI', ['雷']='アパマジャI', ['水']='ハオーマI'}
 
-elements.recast_staff_of = {['Light']='Arka II', ['Dark']='Xsaeta II', ['Fire']='Atar II', ['Ice']='Vourukasha II',
-    ['Wind']='Vayuvata II', ['Earth']='Vishrava II', ['Lightning']='Apamajas II', ['Water']='Haoma II', ['Thunder']='Apamajas II'}
+elements.recast_staff_of = {['光']='アーカII', ['闇']='キサエタII', ['火']='アターII', ['氷']='ボルカシャII',
+    ['風']='バユバタII', ['土']='ビシュラバII', ['雷']='アパマジャ II', ['水']='ハオーマII'}
 
-elements.perpetuance_staff_of = {['Light']='Arka III', ['Dark']='Xsaeta III', ['Fire']='Atar III', ['Ice']='Vourukasha III',
-    ['Wind']='Vayuvata III', ['Earth']='Vishrava III', ['Lightning']='Apamajas III', ['Water']='Haoma III', ['Thunder']='Apamajas III'}
+elements.perpetuance_staff_of = {['光']='アーカIII', ['闇']='キサエタIII', ['火']='アターIII', ['氷']='ボルカシャIII',
+    ['風']='バユバタIII', ['土']='ビシュラバIII', ['雷']='アパマジャIII', ['水']='ハオーマIII'}
 
 
 -- Elements for skillchain names
 skillchain_elements = {}
-skillchain_elements.Light = S{'Light','Fire','Wind','Lightning'}
-skillchain_elements.Darkness = S{'Dark','Ice','Earth','Water'}
-skillchain_elements.Fusion = S{'Light','Fire'}
-skillchain_elements.Fragmentation = S{'Wind','Lightning'}
-skillchain_elements.Distortion = S{'Ice','Water'}
-skillchain_elements.Gravitation = S{'Dark','Earth'}
-skillchain_elements.Transfixion = S{'Light'}
-skillchain_elements.Compression = S{'Dark'}
-skillchain_elements.Liquification = S{'Fire'}
-skillchain_elements.Induration = S{'Ice'}
-skillchain_elements.Detonation = S{'Wind'}
-skillchain_elements.Scission = S{'Earth'}
-skillchain_elements.Impaction = S{'Lightning'}
-skillchain_elements.Reverberation = S{'Water'}
+skillchain_elements.Light = S{'光','火','風','雷'}
+skillchain_elements.Darkness = S{'闇','氷','土','水'}
+skillchain_elements.Fusion = S{'光','火'}
+skillchain_elements.Fragmentation = S{'風','雷'}
+skillchain_elements.Distortion = S{'氷','水'}
+skillchain_elements.Gravitation = S{'闇','土'}
+skillchain_elements.Transfixion = S{'光'}
+skillchain_elements.Compression = S{'闇'}
+skillchain_elements.Liquification = S{'火'}
+skillchain_elements.Induration = S{'氷'}
+skillchain_elements.Detonation = S{'風'}
+skillchain_elements.Scission = S{'土'}
+skillchain_elements.Impaction = S{'雷'}
+skillchain_elements.Reverberation = S{'水'}
 
 
 -------------------------------------------------------------------------------------------------------------------
@@ -78,65 +78,65 @@ skillchain_elements.Reverberation = S{'Water'}
 data = {}
 data.weaponskills = {}
 data.weaponskills.relic = {
-    ["Spharai"] = "Final Heaven",
-    ["Mandau"] = "Mercy Stroke",
-    ["Excalibur"] = "Knights of Round",
-    ["Ragnarok"] = "Scourge",
-    ["Guttler"] = "Onslaught",
-    ["Bravura"] = "Metatron Torment",
-    ["Apocalypse"] = "Catastrophe",
-    ["Gungnir"] = "Gierskogul",
-    ["Kikoku"] = "Blade: Metsu",
-    ["Amanomurakumo"] = "Tachi: Kaiten",
-    ["Mjollnir"] = "Randgrith",
-    ["Claustrum"] = "Gates of Tartarus",
-    ["Annihilator"] = "Coronach",
-    ["Yoichinoyumi"] = "Namas Arrow"}
+    ["スファライ"] = "ファイナルヘヴン",
+    ["マンダウ"] = "マーシーシトローク",
+    ["エクスカリバー"] = "ナイツオブラウンド",
+    ["ラグナロク"] = "スカージ",
+    ["ガトラー"] = "オンスロート",
+    ["ラブビューラ"] = "メタトロントーメント",
+    ["アポカリプス"] = "カタストロフィ",
+    ["グングニル"] = "ゲイルスコグル",
+    ["鬼哭"] = "生者必滅",
+    ["天の村雲"] = "零之太刀:回天",
+    ["ミョルニル"] = "ランドグリース",
+    ["クラウストルム"] = "タルタロスゲート",
+    ["アナイアレーター"] = "カラナック",
+    ["与一の弓"] = "南無八幡"}
 data.weaponskills.mythic = {
-    ["Conqueror"] = "King's Justice",
-    ["Glanzfaust"] = "Ascetic's Fury",
-    ["Yagrush"] = "Mystic Boon",
-    ["Laevateinn"] = "Vidohunir",
-    ["Murgleis"] = "Death Blossom",
-    ["Vajra"] = "Mandalic Stab",
-    ["Burtgang"] = "Atonement",
-    ["Liberator"] = "Insurgency",
-    ["Aymur"] = "Primal Rend",
-    ["Carnwenhan"] = "Mordant Rime",
-    ["Gastraphetes"] = "Trueflight",
-    ["Kogarasumaru"] = "Tachi: Rana",
-    ["Nagi"] = "Blade: Kamu",
-    ["Ryunohige"] = "Drakesbane",
-    ["Nirvana"] = "Garland of Bliss",
-    ["Tizona"] = "Expiacion",
-    ["Death Penalty"] = "Leaden Salute",
-    ["Kenkonken"] = "Stringing Pummel",
-    ["Terpsichore"] = "Pyrrhic Kleos",
-    ["Tupsimati"] = "Omniscience",
-    ["Idris"] = "Exudation",
-    ["Epeolatry"] = "Dimidiation"}
+    ["コンカラー"] = "キングジャスティス",
+    ["グランツファウスト"] = "アスケーテンツォルン",
+    ["ヤグルシュ"] = "ミスティックブーン",
+    ["レーヴァテイン"] = "ヴィゾフニル",
+    ["ミュルグレス"] = "ロズレーファタール",
+    ["ヴァジュラ"] = "マンダリクスタップ",
+    ["ブルトガング"] = "ロイエ",
+    ["リベレーター"] = "インサージェンシー",
+    ["アイムール"] = "プライマルレンド",
+    ["カルンウェナン"] = "モーダントライム",
+    ["ガストラフェテス"] = "トゥルーフライト",
+    ["小鴉丸"] = "十之太刀:乱鴉",
+    ["凪"] = "カムハブリ",
+    ["竜の髭"] = "雲蒸竜変",
+    ["ニルヴァーナ"] = "ガーランドオブブリス",
+    ["ティソーナ"] = "エクスピアシオン",
+    ["デスペナルティ"] = "レデンサリュート",
+    ["乾坤圏"] = "連環六合圏",
+    ["テルプシコラー"] = "ピリッククレオス",
+    ["トゥプシマティ"] = "オムニシエンス",
+    ["イドリス"] = "エクズデーション",
+    ["エピオラトリー"] = "デミディエーション"}
 data.weaponskills.empyrean = {
-    ["Verethragna"] = "Victory Smite",
-    ["Twashtar"] = "Rudra's Storm",
-    ["Almace"] = "Chant du Cygne",
-    ["Caladbolg"] = "Torcleaver",
-    ["Farsha"] = "Cloudsplitter",
-    ["Ukonvasara"] = "Ukko's Fury",
-    ["Redemption"] = "Quietus",
-    ["Rhongomiant"] = "Camlann's Torment",
-    ["Kannagi"] = "Blade: Hi",
-    ["Masamune"] = "Tachi: Fudo",
-    ["Gambanteinn"] = "Dagann",
-    ["Hvergelmir"] = "Myrkr",
-    ["Gandiva"] = "Jishnu's Radiance",
-    ["Armageddon"] = "Wildfire"}
+    ["ウルスラグナ"] = "ビクトリースマイト",
+    ["トゥワシュトラ"] = "ルドラストーム",
+    ["アルマス"] = "シャンデュシニュ",
+    ["カラドボルグ"] = "トアクリーバー",
+    ["ファルシャ"] = "クラウドスプリッタ",
+    ["ウコンバサラ"] = "ウッコフューリー",
+    ["リデンプション"] = "クワイタス",
+    ["ロンゴミアント"] = "カムラン",
+    ["神無"] = "秘",
+    ["正宗"] = "祖之太刀:不動",
+    ["ガンバンテイン"] = "ダガン",
+    ["フヴェルゲルミン"] = "ミルキル",
+    ["ガーンデーヴァ"] = "ジシュヌの光輝",
+    ["アルマゲドン"] = "ワイルドファイア"}
 
 -- Weaponskills that can be used at range.
-data.weaponskills.ranged = S{"Flaming Arrow", "Piercing Arrow", "Dulling Arrow", "Sidewinder", "Arching Arrow",
-    "Empyreal Arrow", "Refulgent Arrow", "Apex Arrow", "Namas Arrow", "Jishnu's Radiance",
-    "Hot Shot", "Split Shot", "Sniper Shot", "Slug Shot", "Heavy Shot", "Detonator", "Last Stand",
-    "Coronach", "Trueflight", "Leaden Salute", "Wildfire",
-    "Myrkr"}
+data.weaponskills.ranged = S{"フレイミングアロー", "ピアシングアロー", "ダリングアロー", "サイドワインダー", "アーチングアロー",
+    "エンピリアルアロー", "リフルジェントアロー", "エイペクスアロー", "南無八幡", "ジシュヌの光輝",
+    "ホットショット", "スプリットショット", "スナイパーショット", "スラッグショット", "ヘヴィショット", "デトネーター", "ラストスタンド",
+    "カラナック", "トゥルーフライト", "レデンサリュート", "ワイルドファイア",
+    "ミルキル", "ダガン"}
 
 ranged_weaponskills = data.weaponskills.ranged
 
@@ -146,62 +146,75 @@ ranged_weaponskills = data.weaponskills.ranged
 -------------------------------------------------------------------------------------------------------------------
 
 spell_maps = {
-    ['Cure']='Cure',['Cure II']='Cure',['Cure III']='Cure',['Cure IV']='Cure',['Cure V']='Cure',['Cure VI']='Cure',
-    ['Full Cure']='Cure',
-    ['Cura']='Curaga',['Cura II']='Curaga',['Cura III']='Curaga',
-    ['Curaga']='Curaga',['Curaga II']='Curaga',['Curaga III']='Curaga',['Curaga IV']='Curaga',['Curaga V']='Curaga',
+    ['ケアル']='Cure',['ケアルII']='Cure',['ケアルIII']='Cure',['ケアルIV']='Cure',['ケアルV']='Cure',['ケアルVI']='Cure',
+    ['フルケア']='Cure',
+    ['ケアルラ']='Curaga',['ケアルラII']='Curaga',['ケアルラIII']='Curaga',
+    ['ケアルガ']='Curaga',['ケアルガII']='Curaga',['ケアルガIII']='Curaga',['ケアルガIV']='Curaga',['ケアルガV']='Curaga',
     -- Status Removal doesn't include Esuna or Sacrifice, since they work differently than the rest
-    ['Poisona']='StatusRemoval',['Paralyna']='StatusRemoval',['Silena']='StatusRemoval',['Blindna']='StatusRemoval',['Cursna']='StatusRemoval',
-    ['Stona']='StatusRemoval',['Viruna']='StatusRemoval',['Erase']='StatusRemoval',
-    ['Barfire']='BarElement',['Barstone']='BarElement',['Barwater']='BarElement',['Baraero']='BarElement',['Barblizzard']='BarElement',['Barthunder']='BarElement',
-    ['Barfira']='BarElement',['Barstonra']='BarElement',['Barwatera']='BarElement',['Baraera']='BarElement',['Barblizzara']='BarElement',['Barthundra']='BarElement',
-    ['Raise']='Raise',['Raise II']='Raise',['Raise III']='Raise',['Arise']='Raise',
-    ['Reraise']='Reraise',['Reraise II']='Reraise',['Reraise III']='Reraise',['Reraise IV']='Reraise',
-    ['Protect']='Protect',['Protect II']='Protect',['Protect III']='Protect',['Protect IV']='Protect',['Protect V']='Protect',
-    ['Shell']='Shell',['Shell II']='Shell',['Shell III']='Shell',['Shell IV']='Shell',['Shell V']='Shell',
-    ['Protectra']='Protectra',['Protectra II']='Protectra',['Protectra III']='Protectra',['Protectra IV']='Protectra',['Protectra V']='Protectra',
-    ['Shellra']='Shellra',['Shellra II']='Shellra',['Shellra III']='Shellra',['Shellra IV']='Shellra',['Shellra V']='Shellra',
-    ['Regen']='Regen',['Regen II']='Regen',['Regen III']='Regen',['Regen IV']='Regen',['Regen V']='Regen',
-    ['Refresh']='Refresh',['Refresh II']='Refresh',['Refresh III']='Refresh',
-    ['Teleport-Holla']='Teleport',['Teleport-Dem']='Teleport',['Teleport-Mea']='Teleport',['Teleport-Altep']='Teleport',['Teleport-Yhoat']='Teleport',
-    ['Teleport-Vahzl']='Teleport',['Recall-Pashh']='Teleport',['Recall-Meriph']='Teleport',['Recall-Jugner']='Teleport',
-    ['Valor Minuet']='Minuet',['Valor Minuet II']='Minuet',['Valor Minuet III']='Minuet',['Valor Minuet IV']='Minuet',['Valor Minuet V']='Minuet',
-    ["Knight's Minne"]='Minne',["Knight's Minne II"]='Minne',["Knight's Minne III"]='Minne',["Knight's Minne IV"]='Minne',["Knight's Minne V"]='Minne',
-    ['Advancing March']='March',['Victory March']='March',
-    ['Sword Madrigal']='Madrigal',['Blade Madrigal']='Madrigal',
-    ["Hunter's Prelude"]='Prelude',["Archer's Prelude"]='Prelude',
-    ['Sheepfoe Mambo']='Mambo',['Dragonfoe Mambo']='Mambo',
-    ['Raptor Mazurka']='Mazurka',['Chocobo Mazurka']='Mazurka',
-    ['Sinewy Etude']='Etude',['Dextrous Etude']='Etude',['Vivacious Etude']='Etude',['Quick Etude']='Etude',['Learned Etude']='Etude',['Spirited Etude']='Etude',['Enchanting Etude']='Etude',
-    ['Herculean Etude']='Etude',['Uncanny Etude']='Etude',['Vital Etude']='Etude',['Swift Etude']='Etude',['Sage Etude']='Etude',['Logical Etude']='Etude',['Bewitching Etude']='Etude',
-    ["Mage's Ballad"]='Ballad',["Mage's Ballad II"]='Ballad',["Mage's Ballad III"]='Ballad',
-    ["Army's Paeon"]='Paeon',["Army's Paeon II"]='Paeon',["Army's Paeon III"]='Paeon',["Army's Paeon IV"]='Paeon',["Army's Paeon V"]='Paeon',["Army's Paeon VI"]='Paeon',
-    ['Fire Carol']='Carol',['Ice Carol']='Carol',['Wind Carol']='Carol',['Earth Carol']='Carol',['Lightning Carol']='Carol',['Water Carol']='Carol',['Light Carol']='Carol',['Dark Carol']='Carol',
-    ['Fire Carol II']='Carol',['Ice Carol II']='Carol',['Wind Carol II']='Carol',['Earth Carol II']='Carol',['Lightning Carol II']='Carol',['Water Carol II']='Carol',['Light Carol II']='Carol',['Dark Carol II']='Carol',
-    ['Foe Lullaby']='Lullaby',['Foe Lullaby II']='Lullaby',['Horde Lullaby']='Lullaby',['Horde Lullaby II']='Lullaby',
-    ['Fire Threnody']='Threnody',['Ice Threnody']='Threnody',['Wind Threnody']='Threnody',['Earth Threnody']='Threnody',['Lightning Threnody']='Threnody',['Water Threnody']='Threnody',['Light Threnody']='Threnody',['Dark Threnody']='Threnody',
-    ['Fire Threnody II']='Threnody',['Ice Threnody II']='Threnody',['Wind Threnody II']='Threnody',['Earth Threnody II']='Threnody',['Lightning Threnody II']='Threnody',['Water Threnody II']='Threnody',['Light Threnody II']='Threnody',['Dark Threnody II']='Threnody',
-    ['Battlefield Elegy']='Elegy',['Carnage Elegy']='Elegy',
-    ['Foe Requiem']='Requiem',['Foe Requiem II']='Requiem',['Foe Requiem III']='Requiem',['Foe Requiem IV']='Requiem',['Foe Requiem V']='Requiem',['Foe Requiem VI']='Requiem',['Foe Requiem VII']='Requiem',
-    ['Utsusemi: Ichi']='Utsusemi',['Utsusemi: Ni']='Utsusemi',['Utsusemi: San']='Utsusemi',
-    ['Katon: Ichi'] = 'ElementalNinjutsu',['Suiton: Ichi'] = 'ElementalNinjutsu',['Raiton: Ichi'] = 'ElementalNinjutsu',
-    ['Doton: Ichi'] = 'ElementalNinjutsu',['Huton: Ichi'] = 'ElementalNinjutsu',['Hyoton: Ichi'] = 'ElementalNinjutsu',
-    ['Katon: Ni'] = 'ElementalNinjutsu',['Suiton: Ni'] = 'ElementalNinjutsu',['Raiton: Ni'] = 'ElementalNinjutsu',
-    ['Doton: Ni'] = 'ElementalNinjutsu',['Huton: Ni'] = 'ElementalNinjutsu',['Hyoton: Ni'] = 'ElementalNinjutsu',
-    ['Katon: San'] = 'ElementalNinjutsu',['Suiton: San'] = 'ElementalNinjutsu',['Raiton: San'] = 'ElementalNinjutsu',
-    ['Doton: San'] = 'ElementalNinjutsu',['Huton: San'] = 'ElementalNinjutsu',['Hyoton: San'] = 'ElementalNinjutsu',
-    ['Banish']='Banish',['Banish II']='Banish',['Banish III']='Banish',['Banishga']='Banish',['Banishga II']='Banish',
-    ['Holy']='Holy',['Holy II']='Holy',['Drain']='Drain',['Drain II']='Drain',['Drain III']='Drain',['Aspir']='Aspir',['Aspir II']='Aspir',
-    ['Absorb-Str']='Absorb',['Absorb-Dex']='Absorb',['Absorb-Vit']='Absorb',['Absorb-Agi']='Absorb',['Absorb-Int']='Absorb',['Absorb-Mnd']='Absorb',['Absorb-Chr']='Absorb',
-    ['Absorb-Acc']='Absorb',['Absorb-TP']='Absorb',['Absorb-Attri']='Absorb',
-    ['Enlight']='Enlight',['Enlight II']='Enlight',['Endark']='Endark',['Endark II']='Endark',
-    ['Burn']='ElementalEnfeeble',['Frost']='ElementalEnfeeble',['Choke']='ElementalEnfeeble',['Rasp']='ElementalEnfeeble',['Shock']='ElementalEnfeeble',['Drown']='ElementalEnfeeble',
-    ['Pyrohelix']='Helix',['Cryohelix']='Helix',['Anemohelix']='Helix',['Geohelix']='Helix',['Ionohelix']='Helix',['Hydrohelix']='Helix',['Luminohelix']='Helix',['Noctohelix']='Helix',
-	['Pyrohelix II']='Helix',['Cryohelix II']='Helix',['Anemohelix II']='Helix',['Geohelix II']='Helix',['Ionohelix II']='Helix',['Hydrohelix II']='Helix',['Luminohelix II']='Helix',['Noctohelix II']='Helix',
-    ['Firestorm']='Storm',['Hailstorm']='Storm',['Windstorm']='Storm',['Sandstorm']='Storm',['Thunderstorm']='Storm',['Rainstorm']='Storm',['Aurorastorm']='Storm',['Voidstorm']='Storm',
-	['Firestorm II']='Storm',['Hailstorm II']='Storm',['Windstorm II']='Storm',['Sandstorm II']='Storm',['Thunderstorm II']='Storm',['Rainstorm II']='Storm',['Aurorastorm II']='Storm',['Voidstorm II']='Storm',
-    ['Fire Maneuver']='Maneuver',['Ice Maneuver']='Maneuver',['Wind Maneuver']='Maneuver',['Earth Maneuver']='Maneuver',['Thunder Maneuver']='Maneuver',
-    ['Water Maneuver']='Maneuver',['Light Maneuver']='Maneuver',['Dark Maneuver']='Maneuver',
+    ['ポイゾナ']='StatusRemoval',['パラナ']='StatusRemoval',['サイレナ']='StatusRemoval',['ブライナ']='StatusRemoval',['カーズナ']='StatusRemoval',
+    ['ストナ']='StatusRemoval',['ウィルナ']='StatusRemoval',['イレース']='StatusRemoval',
+    ['バファイ']='BarElement',['バストン']='BarElement',['バウォタ']='BarElement',['バエアロ']='BarElement',['バブリザ']='BarElement',['バサンダ']='BarElement',
+    ['バファイラ']='BarElement',['バストンラ']='BarElement',['バウォタラ']='BarElement',['バエアロラ']='BarElement',['バブリザラ']='BarElement',['バサンダラ']='BarElement',
+    ['バスリプル']='BarStatus',['バポイズン']='BarStatus',['バパライズ']='BarStatus',['バサイレス']='BarStatus',['バウィルス']='BarStatus',['バブレイク']='BarStatus',['バアムネジア']='BarStatus',
+    ['バスリプラ']='BarStatus',['バポイゾラ']='BarStatus',['バブライラ']='BarStatus',['バサイレラ']='BarStatus',['バウィルラ']='BarStatus',['バブレクラ']='BarStatus',['バアムネジラ']='BarStatus',
+    ['アディバイト']='BoostStat',['アディマイン']='BoostStat',['アディカリス']='BoostStat',['アディアジル']='BoostStat',['アディスト']='BoostStat',['アディイン']='BoostStat',['アディデック']='BoostStat',
+    ['ゲインバイト']='BoostStat',['ゲインマイン']='BoostStat',['ゲインカリス']='BoostStat',['ゲインアジル']='BoostStat',['ゲインスト']='BoostStat',['ゲインイン']='BoostStat',['ゲインデック']='BoostStat',
+    ['レイズ']='Raise',['レイズII']='Raise',['レイズIII']='Raise',['アレイズ']='Raise',
+    ['リレイズ']='Reraise',['リレイズII']='Reraise',['リレイズIII']='Reraise',['リレイズIV']='Reraise',
+    ['ディア']='Dia',['ディアII']='Dia',['ディアIII']='Dia',['ディアガ']='Dia',
+    ['バイオ']='Bio',['バイオII']='Bio',['バイオIII']='Bio',
+    ['ディスペル']='Dispel',['ディスペガ']='Dispel',
+    ['プロテス']='Protect',['プロテスII']='Protect',['プロテスIII']='Protect',['プロテスIV']='Protect',['プロテスV']='Protect',
+    ['シェル']='Shell',['シェルII']='Shell',['シェルIII']='Shell',['シェルIV']='Shell',['シェルV']='Shell',
+    ['プロテア']='Protectra',['プロテアII']='Protectra',['プロテアIII']='Protectra',['プロテアIV']='Protectra',['プロテアV']='Protectra',
+    ['シェルラ']='Shellra',['シェルラII']='Shellra',['シェルラIII']='Shellra',['シェルラIV']='Shellra',['シェルラV']='Shellra',
+    ['リジェネ']='Regen',['リジェネII']='Regen',['リジェネIII']='Regen',['リジェネIV']='Regen',['リジェネV']='Regen',
+    ['リフレシュ']='Refresh',['リフレシュII']='Refresh',['リフレシュIII']='Refresh',
+    ['テレポホラ']='Teleport',['テレポデム']='Teleport',['テレポメア']='Teleport',['テレポルテ']='Teleport',['テレポヨト']='Teleport',
+    ['テレポヴァズ']='Teleport',['リコールパシュ']='Teleport',['リコールメリファ']='Teleport',['リコールジャグ']='Teleport',
+    ['リトレース']='Teleport',['トラクタ']='Teleport',['エスケプ']='Teleport',['デジョン']='Teleport',['デジョンII']='Teleport',
+    ['ストライ']='Temper',['ストライII']='Temper',
+    ['猛者のメヌエット']='Minuet',['猛者のメヌエットII']='Minuet',['猛者のメヌエットIII']='Minuet',['猛者のメヌエットIV']='Minuet',['猛者のメヌエットV']='Minuet',
+    ["重装騎兵のミンネ"]='Minne',["重装騎兵のミンネII"]='Minne',["重装騎兵のミンネIII"]='Minne',["重装騎兵のミンネIV"]='Minne',["重装騎兵のミンネV"]='Minne',
+    ['無敵の進撃マーチ']='March',['栄光の凱旋マーチ']='March',['栄典の戴冠マーチ']='March',
+    ['剣闘士のマドリガル']='Madrigal',['剣豪のマドリガル']='Madrigal',
+    ["狩人のプレリュード"]='Prelude',["弓師のプレリュード"]='Prelude',
+    ['闘羊士のマンボ']='Mambo',['闘龍士のマンボ']='Mambo',
+    ['ラプトルのマズルカ']='Mazurka',['チョコボのマズルカ']='Mazurka',
+    ['剛力のエチュード']='Etude',['器用のエチュード']='Etude',['元気のエチュード']='Etude',['機敏のエチュード']='Etude',['知恵のエチュード']='Etude',['精神のエチュード']='Etude',['魅了のエチュード']='Etude',
+    ['怪力のエチュード']='Etude',['妙技のエチュード']='Etude',['活力のエチュード']='Etude',['俊敏のエチュード']='Etude',['英知のエチュード']='Etude',['理力のエチュード']='Etude',['魅惑のエチュード']='Etude',
+    ["魔道士のバラード"]='Ballad',["魔道士のバラードII"]='Ballad',["魔道士のバラードIII"]='Ballad',
+    ["戦士達のピーアン"]='Paeon',["戦士達のピーアンII"]='Paeon',["戦士達のピーアンIII"]='Paeon',["戦士達のピーアンIV"]='Paeon',["戦士達のピーアンV"]='Paeon',["戦士達のピーアンVI"]='Paeon',
+    ['耐火カロル第一楽章']='Carol',['耐寒カロル第一楽章']='Carol',['耐風カロル第一楽章']='Carol',['耐震カロル第一楽章']='Carol',['耐電カロル第一楽章']='Carol',['耐波カロル第一楽章']='Carol',['耐光カロル第一楽章']='Carol',['耐闇カロル第一楽章']='Carol',
+    ['耐火カロル第二楽章']='Carol',['耐寒カロル第二楽章']='Carol',['耐風カロル第二楽章']='Carol',['耐震カロル第二楽章']='Carol',['耐電カロル第二楽章']='Carol',['耐波カロル第二楽章']='Carol',['耐光カロル第二楽章']='Carol',['耐闇カロル第二楽章']='Carol',
+    ['魔物のララバイ']='Lullaby',['魔物のララバイII']='Lullaby',['魔物達のララバイ']='Lullaby',['魔物達のララバイII']='Lullaby',
+    ['炎のスレノディ']='Threnody',['氷のスレノディ']='Threnody',['風のスレノディ']='Threnody',['土のスレノディ']='Threnody',['雷のスレノディ']='Threnody',['水のスレノディ']='Threnody',['光のスレノディ']='Threnody',['闇のスレノディ']='Threnody',
+    ['炎のスレノディII']='Threnody',['氷のスレノディII']='Threnody',['風のスレノディII']='Threnody',['土のスレノディII']='Threnody',['雷のスレノディII']='Threnody',['水のスレノディII']='Threnody',['光のスレノディII']='Threnody',['闇のスレノディII']='Threnody',
+    ['戦場のエレジー']='Elegy',['修羅のエレジー']='Elegy',
+    ['魔物のレクイエム']='Requiem',['魔物のレクイエムII']='Requiem',['魔物のレクイエムIII']='Requiem',['魔物のレクイエムIV']='Requiem',['魔物のレクイエムV']='Requiem',['魔物のレクイエムVI']='Requiem',['魔物のレクイエムVII']='Requiem',
+    ['空蝉の術:壱']='Utsusemi',['空蝉の術:弐']='Utsusemi',['空蝉の術:参']='Utsusemi',
+    ['火遁の術:壱'] = 'ElementalNinjutsu',['水遁の術:壱'] = 'ElementalNinjutsu',['雷遁の術:壱'] = 'ElementalNinjutsu',
+    ['土遁の術:壱'] = 'ElementalNinjutsu',['風遁の術:壱'] = 'ElementalNinjutsu',['氷遁の術:壱'] = 'ElementalNinjutsu',
+    ['火遁の術:弐'] = 'ElementalNinjutsu',['水遁の術:弐'] = 'ElementalNinjutsu',['雷遁の術:弐'] = 'ElementalNinjutsu',
+    ['土遁の術:弐'] = 'ElementalNinjutsu',['風遁の術:弐'] = 'ElementalNinjutsu',['氷遁の術:弐'] = 'ElementalNinjutsu',
+    ['火遁の術:参'] = 'ElementalNinjutsu',['水遁の術:参'] = 'ElementalNinjutsu',['雷遁の術:参'] = 'ElementalNinjutsu',
+    ['土遁の術:参'] = 'ElementalNinjutsu',['風遁の術:参'] = 'ElementalNinjutsu',['氷遁の術:参'] = 'ElementalNinjutsu',
+    ['バニシュ']='Banish',['バニシュII']='Banish',['バニシュIII']='Banish',['バニシュガ']='Banish',['バニシュガII']='Banish',
+    ['ホーリー']='Holy',['ホーリーII']='Holy',['ドレイン']='Drain',['ドレインII']='Drain',['ドレインIII']='Drain',['アスピル']='Aspir',['アスピルII']='Aspir',
+    ['アブゾースト']='Absorb',['アブゾデック']='Absorb',['アブゾバイト']='Absorb',['アブゾアジル']='Absorb',['アブゾイン']='Absorb',['アブゾマイン']='Absorb',['アブゾカリス']='Absorb',
+    ['アブゾアキュリ']='Absorb',['アブゾタック']='Absorb',['アブゾアトリ']='Absorb',
+    ['エンライト']='Enlight',['エンライトII']='Enlight',['エンダーク']='Endark',['エンダークII']='Endark',
+    ['バーン']='ElementalEnfeeble',['フロスト']='ElementalEnfeeble',['チョーク']='ElementalEnfeeble',['ラスプ']='ElementalEnfeeble',['ショック']='ElementalEnfeeble',['ドラウン']='ElementalEnfeeble',
+    ['土門の計']='Helix',['水門の計']='Helix',['火門の計']='Helix',['氷門の計']='Helix',['雷門の計']='Helix',['風門の計']='Helix',['光門の計']='Helix',['闇門の計']='Helix',
+	['土門の計II']='Helix',['水門の計II']='Helix',['火門の計II']='Helix',['氷門の計II']='Helix',['雷門の計II']='Helix',['風門の計II']='Helix',['光門の計II']='Helix',['闇門の計II']='Helix',
+    ['砂塵の陣']='Storm',['豪雨の陣']='Storm',['熱波の陣']='Storm',['吹雪の陣']='Storm',['疾雷の陣']='Storm',['烈風の陣']='Storm',['極光の陣']='Storm',['妖霧の陣']='Storm',
+	['砂塵の陣II']='Storm',['豪雨の陣II']='Storm',['熱波の陣II']='Storm',['吹雪の陣II']='Storm',['疾雷の陣II']='Storm',['烈風の陣II']='Storm',['極光の陣II']='Storm',['妖霧の陣II']='Storm',
+    ['ファイアマニューバ']='Maneuver',['アイスマニューバ']='Maneuver',['ウィンドマニューバ']='Maneuver',['アースマニューバ']='Maneuver',['サンダーマニューバ']='Maneuver',
+    ['ウォータマニューバ']='Maneuver',['ライトマニューバ']='Maneuver',['ダークマニューバ']='Maneuver',
+    ['ヘイスト']='Haste',['ヘイストII']='Haste',
+    ['ブレイズスパイク']='Spikes',['アイススパイク']='Spikes',['ショックスパイク']='Spikes',
+    ['エンサンダー']='EnSpell',['エンストーン']='EnSpell',['エンエアロ']='EnSpell',['エンブリザド']='EnSpell',['エンファイア']='EnSpell',['エンウォータ']='EnSpell',
+    ['エンサンダーII']='EnSpell',['エンストーンII']='EnSpell',['エンエアロII']='EnSpell',['エンブリザドII']='EnSpell',['エンファイアII']='EnSpell',['エンウォータII']='EnSpell',
 }
 
 no_skill_spells_list = S{'Haste', 'Refresh', 'Regen', 'Protect', 'Protectra', 'Shell', 'Shellra',
@@ -217,54 +230,56 @@ areas = {}
 
 -- City areas for town gear and behavior.
 areas.Cities = S{
-    "Ru'Lude Gardens",
-    "Upper Jeuno",
-    "Lower Jeuno",
-    "Port Jeuno",
-    "Port Windurst",
-    "Windurst Waters",
-    "Windurst Woods",
-    "Windurst Walls",
-    "Heavens Tower",
-    "Port San d'Oria",
-    "Northern San d'Oria",
-    "Southern San d'Oria",
-    "Port Bastok",
-    "Bastok Markets",
-    "Bastok Mines",
-    "Metalworks",
-    "Aht Urhgan Whitegate",
-    "Tavnazian Safehold",
-    "Nashmau",
-    "Selbina",
-    "Mhaura",
-    "Norg",
-    "Eastern Adoulin",
-    "Western Adoulin",
-    "Kazham",
-    "Rabao",
-    "Chocobo Circuit",
+    "ル・ルデの庭",
+    "ジュノ上層",
+    "ジュノ下層",
+    "ジュノ港",
+    "ウィンダス港",
+    "ウィンダス水の区",
+    "ウィンダス森の区",
+    "ウィンダス石の区",
+    "天の塔",
+    "サンドリア港",
+    "北サンドリア",
+    "南サンドリア",
+    "バストゥーク港",
+    "バストゥーク商業区",
+    "バストゥーク鉱山区",
+    "大工房",
+    "アトルガン白門",
+    "タブナジア地下壕",
+    "ナシュモ",
+    "セルビナ",
+    "マウラ",
+    "ノーグ",
+    "西アドゥリン",
+    "東アドゥリン",
+    "カザム",
+    "ラバオ",
+    "チョコボサーキット",
 }
 -- Adoulin areas, where Ionis will grant special stat bonuses.
 areas.Adoulin = S{
-    "Yahse Hunting Grounds",
-    "Ceizak Battlegrounds",
-    "Foret de Hennetiel",
-    "Morimar Basalt Fields",
-    "Yorcia Weald",
-    "Yorcia Weald [U]",
-    "Cirdas Caverns",
-    "Cirdas Caverns [U]",
-    "Marjami Ravine",
-    "Kamihr Drifts",
-    "Sih Gates",
-    "Moh Gates",
-    "Dho Gates",
-    "Woh Gates",
-    "Rala Waterways",
-    "Rala Waterways [U]",
-    "Outer Ra'Kaznar",
-    "Outer Ra'Kaznar [U]"
+    "ヤッセの狩り場",
+    "ケイザック古戦場",
+    "エヌティエル水林",
+    "モリマー台地",
+    "ヨルシア森林",
+    "ヨルシア森林〔Ｕ〕",
+    "シルダス洞窟",
+    "シルダス洞窟〔Ｕ〕",
+    "マリアミ渓谷マリアミ渓谷",
+    "カミール山麓",
+    "シィの門",
+    "モーの門",
+    "ドーの門",
+    "ウォーの門",
+    "ララ水道",
+    "ララ水道〔Ｕ〕",
+    "ラ・カザナル宮外郭",
+    "ラ・カザナル宮外郭〔Ｕ〕",
+    "ラ・カザナル宮内郭",
+    "ラ・カザナル宮天守",
 }
 
 
