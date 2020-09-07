@@ -103,7 +103,7 @@ end
 -- Global intercept on buff change.
 function user_buff_change(buff, gain, eventArgs)
 	-- Create a timer when we gain weakness.  Remove it when weakness is gone.
-	if buff:lower() == 'weakness' then
+	if buff == '衰弱' then
 		if gain then
 			send_command('timers create "Weakness" 300 up abilities/00255.png')
 		else
