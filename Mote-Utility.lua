@@ -34,19 +34,19 @@ function cancel_conflicting_buffs(spell, action, spellMap, eventArgs)
             cast_delay(0.2)
             send_command('cancel 71') -- スニーク 71
         elseif spell.name == 'スニーク' and spell.target.type == 'SELF' and buffactive['スニーク'] then
-            send_command(windower.to_shift_ji('cancel 71'))
+            send_command('cancel 71')
         elseif spell.name == ('ストンスキン') then
             send_command('@wait 0.5;cancel 37') -- ストンスキン 37
         elseif string.find(spell.name, '物見') then
-            send_command(windower.to_shift_ji('@wait 0.5;cancel 71'))
+            send_command('@wait 0.5;cancel 71')
         elseif spell.name == '空蝉の術:壱' then
             send_command('@wait 0.5;cancel 66,444') -- 分身 66,分身(2) 444
         elseif (spell.name == 'トランス' or spell.type=='Waltz') and buffactive['剣の舞い'] then
             cast_delay(0.2)
-            send_command(windower.to_shift_ji('cancel 410')) -- 剣の舞い 410
+            send_command('cancel 410') -- 剣の舞い 410
         elseif spell.type=='Samba' and buffactive['扇の舞い'] then
             cast_delay(0.2)
-            send_command(windower.to_shift_ji('cancel 411')) -- 扇の舞い 411
+            send_command('cancel 411') -- 扇の舞い 411
         end
     end
 end
