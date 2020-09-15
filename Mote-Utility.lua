@@ -156,7 +156,7 @@ function refine_waltz(spell, action, spellMap, eventArgs)
         return
     end
 
-    local newWaltz = spell.english
+    local newWaltz = spell.name
     local waltzID
     
     local missingHP
@@ -253,10 +253,10 @@ function refine_waltz(spell, action, spellMap, eventArgs)
     end
 
     
-    if newWaltz ~= spell.english then
+    if newWaltz ~= spell.name then
         send_command('@input /ja "'..windower.to_shift_jis(newWaltz)..'" '..tostring(spell.target.raw))
         if downgrade then
-            add_to_chat(122, windower.to_shift_jis(downgrade))
+            add_to_chat(122, downgrade)
         end
         eventArgs.cancel = true
         return
