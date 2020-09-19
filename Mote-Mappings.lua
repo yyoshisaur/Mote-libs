@@ -174,6 +174,7 @@ spell_maps = {
     ['テレポヴァズ']='Teleport',['リコールパシュ']='Teleport',['リコールメリファ']='Teleport',['リコールジャグ']='Teleport',
     ['リトレース']='Teleport',['トラクタ']='Teleport',['エスケプ']='Teleport',['デジョン']='Teleport',['デジョンII']='Teleport',
     ['ストライ']='Temper',['ストライII']='Temper',
+    ['ファランクス']='Phalanx',['ファランクスII']='Phalanx',
     ['猛者のメヌエット']='Minuet',['猛者のメヌエットII']='Minuet',['猛者のメヌエットIII']='Minuet',['猛者のメヌエットIV']='Minuet',['猛者のメヌエットV']='Minuet',
     ["重装騎兵のミンネ"]='Minne',["重装騎兵のミンネII"]='Minne',["重装騎兵のミンネIII"]='Minne',["重装騎兵のミンネIV"]='Minne',["重装騎兵のミンネV"]='Minne',
     ['無敵の進撃マーチ']='March',['栄光の凱旋マーチ']='March',['栄典の戴冠マーチ']='March',
