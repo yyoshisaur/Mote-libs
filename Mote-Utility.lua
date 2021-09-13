@@ -7,7 +7,10 @@
 -- Buff utility functions.
 -------------------------------------------------------------------------------------------------------------------
 
-local cancel_spells_to_check = S{'スニーク', 'ストンスキン', 'スペクトラルジグ', 'トランス', '物見の術:壱', '空蝉の術:壱'}
+local cancel_spells_to_check = S{'スニーク', 'ストンスキン',
+                                'スペクトラルジグ', 'トランス',
+                                '物見の術:壱', '空蝉の術:壱',
+                                'ヴァリエンス', 'ヴァレション'}
 local cancel_types_to_check = S{'Waltz', 'Samba'}
 
 -- Function to cancel buffs if they'd conflict with using the spell you're attempting.
@@ -47,6 +50,13 @@ function cancel_conflicting_buffs(spell, action, spellMap, eventArgs)
         elseif spell.type=='Samba' and buffactive['扇の舞い'] then
             cast_delay(0.2)
             send_command('cancel 411') -- 扇の舞い 411
+        elseif spell.name == 'ヴァレション' and (buffactive['ヴァリエンス'] or buffactive['リエモン']) then
+            cast_delay(0.2)
+            windower.ffxi.cancel_buff(535)
+            windower.ffxi.cancel_buff(537)
+        elseif spell.name == 'ヴァリエンス' and buffactive['リエモン'] then
+            cast_delay(0.2)
+            windower.ffxi.cancel_buff(537)
         end
     end
 end
