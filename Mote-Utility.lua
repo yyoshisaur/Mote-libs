@@ -50,13 +50,12 @@ function cancel_conflicting_buffs(spell, action, spellMap, eventArgs)
         elseif spell.type=='Samba' and buffactive['扇の舞い'] then
             cast_delay(0.2)
             send_command('cancel 411') -- 扇の舞い 411
-        elseif spell.name == 'ヴァレション' and (buffactive['ヴァリエンス'] or buffactive['リエモン']) then
-            cast_delay(0.2)
-            windower.ffxi.cancel_buff(535)
-            windower.ffxi.cancel_buff(537)
-        elseif spell.name == 'ヴァリエンス' and buffactive['リエモン'] then
-            cast_delay(0.2)
-            windower.ffxi.cancel_buff(537)
+        elseif spell.name == 'ヴァレション' then
+            cast_delay(0.5)
+            send_command('cancel 537')
+        elseif spell.name == 'ヴァリエンス' then
+            cast_delay(0.5)
+            send_command('cancel 531,537')
         end
     end
 end
