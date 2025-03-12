@@ -207,7 +207,7 @@ spell_maps = {
     ['呪縛の術:壱'] = 'EnfeeblingNinjutsu',['暗闇の術:弐'] = 'EnfeeblingNinjutsu',['捕縄の術:弐'] = 'EnfeeblingNinjutsu',
     ['哀車の術:壱'] = 'EnfeeblingNinjutsu',['幽林の術:壱'] = 'EnfeeblingNinjutsu',
     ['バニシュ']='Banish',['バニシュII']='Banish',['バニシュIII']='Banish',['バニシュガ']='Banish',['バニシュガII']='Banish',
-    ['ホーリー']='Holy',['ホーリーII']='Holy',['ドレイン']='Drain',['ドレインII']='Drain',['ドレインIII']='Drain',['アスピル']='Aspir',['アスピルII']='Aspir',
+    ['ホーリー']='Holy',['ホーリーII']='Holy',['ドレイン']='Drain',['ドレインII']='Drain',['ドレインIII']='Drain',['アスピル']='Aspir',['アスピルII']='Aspir',['アスピルIII']='Aspir',
     ['アブゾースト']='Absorb',['アブゾデック']='Absorb',['アブゾバイト']='Absorb',['アブゾアジル']='Absorb',['アブゾイン']='Absorb',['アブゾマイン']='Absorb',['アブゾカリス']='Absorb',
     ['アブゾアキュリ']='Absorb',['アブゾタック']='Absorb',['アブゾアトリ']='Absorb',
     ['エンライト']='Enlight',['エンライトII']='Enlight',['エンダーク']='Endark',['エンダークII']='Endark',
