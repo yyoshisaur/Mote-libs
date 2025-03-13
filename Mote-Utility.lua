@@ -182,45 +182,47 @@ function refine_waltz(spell, action, spellMap, eventArgs)
     
     -- If we have an estimated missing HP value, we can adjust the preferred tier used.
     if missingHP ~= nil then
-        if gearswap.res.jobs[player.main_job_id].ens == 'DNC' then
+        if player.main_job == 'DNC' then
+            dnc_level = player.main_job_level
             if missingHP < 40 and spell.target.name == player.name then
                 -- Not worth curing yourself for so little.
                 -- Don't block when curing others to allow for waking them up.
                 add_to_chat(122,'Full HP!')
                 eventArgs.cancel = true
                 return
-            elseif missingHP < 200 then
-                newWaltz = 'ケアルワルツ'
-                waltzID = 190
-            elseif missingHP < 600 then
-                newWaltz = 'ケアルワルツII'
-                waltzID = 191
-            elseif missingHP < 1100 then
-                newWaltz = 'ケアルワルツIII'
-                waltzID = 192
-            elseif missingHP < 1500 then
-                newWaltz = 'ケアルワルツIV'
-                waltzID = 193
-            else
+            elseif missingHP >= 1500 and dnc_level >= 87 then
                 newWaltz = 'ケアルワルツV'
                 waltzID = 311
+            elseif missingHP >= 1100 and dnc_level >= 70 then
+                newWaltz = 'ケアルワルツIV'
+                waltzID = 193
+            elseif missingHP >= 600 and dnc_level >= 45  then
+                newWaltz = 'ケアルワルツIII'
+                waltzID = 192
+            elseif missingHP >= 200 and dnc_level >= 30 then
+                newWaltz = 'ケアルワルツII'
+                waltzID = 191
+            else
+                newWaltz = 'ケアルワルツ'
+                waltzID = 190
             end
-        elseif gearswap.res.jobs[player.sub_job_id].ens == 'DNC' then
+        elseif player.sub_job == 'DNC' then
+            dnc_level = player.sub_job_level
             if missingHP < 40 and spell.target.name == player.name then
                 -- Not worth curing yourself for so little.
                 -- Don't block when curing others to allow for waking them up.
                 add_to_chat(122,'Full HP!')
                 eventArgs.cancel = true
                 return
-            elseif missingHP < 150 then
-                newWaltz = 'ケアルワルツ'
-                waltzID = 190
-            elseif missingHP < 300 then
+            elseif missingHP >= 300 and dnc_level >= 45 then
+                newWaltz = 'ケアルワルツIII'
+                waltzID = 192
+            elseif missingHP >= 150 and dnc_level >= 30 then
                 newWaltz = 'ケアルワルツII'
                 waltzID = 191
             else
-                newWaltz = 'ケアルワルツIII'
-                waltzID = 192
+                newWaltz = 'ケアルワルツ'
+                waltzID = 190
             end
         else
             -- Not dnc main or sub; bail out
