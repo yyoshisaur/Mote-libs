@@ -1014,6 +1014,18 @@ function status_change(newStatus, oldStatus)
         handle_equipping_gear(newStatus)
         display_breadcrumbs()
     end
+
+    if not eventArgs.handled then
+        if user_post_status_change then
+            user_post_status_change(newStatus, oldStatus, eventArgs)
+        end
+    end
+
+    if not eventArgs.handled then
+        if job_post_status_change then
+            job_post_status_change(newStatus, oldStatus, eventArgs)
+        end
+    end
 end
 
 
